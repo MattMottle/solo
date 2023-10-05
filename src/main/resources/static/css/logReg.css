@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+.blocks {
+	display: flex;
+	flex-direction: rows;
+}
+
+input {
+	width: 100%;
+}
+textarea {
+	width: 100%;
+}
+form {
+	padding: 10px;
+	margin: 10px;
+}
+button {
+	background-color: white;
+	color: black;
+	box-shadow: 3px 3px black;
+}
+h3, h1 {
+	text-align: center;
+}
+.container {
+	width:600px;
+}
