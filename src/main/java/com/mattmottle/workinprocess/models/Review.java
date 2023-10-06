@@ -15,14 +15,15 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
-@Table(name="bids")
-public class Bid {
+@Table(name="reviews")
+public class Review {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -45,22 +46,23 @@ public class Bid {
 	}
 	
 	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="reviewer_id") 
+	private User reviewer;
+	
+	@ManyToOne(fetch=FetchType.LAZY) 
 	@JoinColumn(name="user_id")
-	private User bidder;
+	private User reviewedPerson;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="job_id")
-	private Job jobWithBids;
+	@NotNull(message="Please enter a rating")
+	@Min(value=1, message="Rating must be at least 1")
+	@Max(value=5, message="Rating must be less than 5")
+	private Integer rating;
 	
-	@NotNull(message="Please enter a bid amount")
-	@Min(value=1, message="Bid amount must be at least 1")
-	private Double amount;
+	@NotEmpty(message="Please review this user")
+	@Size(min=10, message="Review must be 10 or more characters.")
+	private String reviewText;
 	
-	@NotEmpty(message="Please add bid remarks")
-	@Size(min=10, message="Bid remarks must be 10 or more characters.")
-	private String bidRemarks;
-	
-	public Bid() {
+	public Review() {
 		
 	}
 	public Long getId() {
@@ -81,28 +83,28 @@ public class Bid {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-	public User getBidder() {
-		return bidder;
+	public User getReviewer() {
+		return reviewer;
 	}
-	public void setBidder(User bidder) {
-		this.bidder = bidder;
+	public void setReviewer(User reviewer) {
+		this.reviewer = reviewer;
 	}
-	public Job getJobWithBids() {
-		return jobWithBids;
+	public User getReviewedPerson() {
+		return reviewedPerson;
 	}
-	public void setJobWithBids(Job jobWithBids) {
-		this.jobWithBids = jobWithBids;
+	public void setReviewedPerson(User reviewedPerson) {
+		this.reviewedPerson = reviewedPerson;
 	}
-	public Double getAmount() {
-		return amount;
+	public Integer getRating() {
+		return rating;
 	}
-	public void setAmount(Double amount) {
-		this.amount = amount;
+	public void setRating(Integer rating) {
+		this.rating = rating;
 	}
-	public String getBidRemarks() {
-		return bidRemarks;
+	public String getReviewText() {
+		return reviewText;
 	}
-	public void setBidRemarks(String bidRemarks) {
-		this.bidRemarks = bidRemarks;
+	public void setReviewText(String reviewText) {
+		this.reviewText = reviewText;
 	}
 }

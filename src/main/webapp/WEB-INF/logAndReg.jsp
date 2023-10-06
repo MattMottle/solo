@@ -10,15 +10,19 @@
 <title>Login And Registration</title>
 <link rel="stylesheet" type="text/css" href="/css/logReg.css">
 </head>
-<body>
+<body background="/images/grinder.jpg">
 	<div class="container">
-		<h1>Work In Process</h1>
+		<div class="banner">
+			<img src="/images/hammerWrench1.png" alt="Hammer Wrench" style="width: 100px">
+			<h1>Work In Process</h1>
+		</div>
 		<div class="blocks">
 			<div class="register">
 				<h3>Register</h3>
 				<form:form action="/register" method="post" modelAttribute="registerUser">
 						<div><form:errors path="firstName" style="color: red"/></div>
 						<div><form:errors path="lastName" style="color: red"/></div>
+						<div><form:errors path="location" style="color: red"/></div>
 						<div><form:errors path="email" style="color: red"/></div>
 						<div><form:errors path="password" style="color: red"/></div>
 						<div><form:errors path="confirmedPassword" style="color: red"/></div>
@@ -29,6 +33,10 @@
 					<p>
 						<form:label path="lastName">Last Name:</form:label>
 						<form:input path="lastName"/>
+					</p>
+					<p>
+						<form:label path="location">Location:</form:label>
+						<form:input path="location"/>
 					</p>
 					<p>
 						<form:label path="email">Email:</form:label>

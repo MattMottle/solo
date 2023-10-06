@@ -43,6 +43,10 @@ public class User {
     @Size(min=3, max=30, message="Last name must be between 2 and 30 characters")
     private String lastName;
     
+    @NotEmpty(message="Location is required!")
+    @Size(min=3, max=30, message="Location must be between 2 and 30 characters")
+    private String location;
+    
     @NotEmpty(message="Email is required!")
     @Email(message="Please enter a valid email!")
     private String email;
@@ -61,6 +65,12 @@ public class User {
     
     @OneToMany(mappedBy="bidder", fetch=FetchType.LAZY)
     private List<Bid> bids;
+    
+    @OneToMany(mappedBy="reviewedPerson", fetch=FetchType.LAZY)
+    private List<Review> allReviews;
+    
+    @OneToMany(mappedBy="reviewer", fetch=FetchType.LAZY)
+    private List<Review> reviews;
 
 	public User() {}
     
@@ -125,7 +135,7 @@ public class User {
 		return jobs;
 	}
 
-	public void setTrails(List<Job> jobs) {
+	public void setJobs(List<Job> jobs) {
 		this.jobs = jobs;
 	}
 	public Date getCreatedAt() {
@@ -151,6 +161,29 @@ public class User {
 	public void setBids(List<Bid> bids) {
 		this.bids = bids;
 	}
-	
+
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
+	public List<Review> getReviewedReviews() {
+		return allReviews;
+	}
+
+	public void setReviewedReviews(List<Review> reviewedReviews) {
+		this.allReviews = reviewedReviews;
+	}
+
+	public List<Review> getReviews() {
+		return reviews;
+	}
+
+	public void setReviews(List<Review> reviews) {
+		this.reviews = reviews;
+	}	
 }
 

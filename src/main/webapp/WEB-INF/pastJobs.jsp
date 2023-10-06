@@ -6,13 +6,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Home</title>
+<title>Past Jobs</title>
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/css/home.css">
 </head>
 <body background="/images/fence2.jpg">
-		<div class="container">
+			<div class="container">
 		<div class="banner">
 			<div class="title">
 				<h1>
@@ -20,11 +20,10 @@
 					Work In Process
 				</h1>
 				<h3>Welcome, <c:out value="${loggedUser.firstName}"/>!</h3>
-				<h4>Current Jobs:</h4>
+				<h4>Past Jobs:</h4>
 			</div>
 			<div class="links">
-				<a href="http://localhost:8080/workinprocess/new">+ Add a Job</a> |
-				<a href="http://localhost:8080/workinprocess/pastjobs">View Past Jobs</a> |
+				<a href="http://localhost:8080/workinprocess">Home</a> |
 				<a href="http://localhost:8080/logout">Logout</a>
 			</div>
 		</div>
@@ -40,22 +39,20 @@
 			  </thead>
 			  <tbody>
 			  	<c:forEach var="job" items="${jobs}">
-			  		<c:if test="${job.isBidAccepted == false }">
+			  		<c:if test="${job.isBidAccepted == true}">
 					    <tr>
 					      <td><c:out value="${job.name}"/></td>
 					      <td>$<fmt:formatNumber type="number" minFractionDigits="2" value="${job.maxBudget}"/></td>
 					      <td><c:out value="${job.jobCreator.firstName}"/></td>
 					      <td>
-					      	<div>
-						      	<a href="http://localhost:8080/workinprocess/${job.id}">View</a>
-						      	<c:if test="${loggedUser.id == job.jobCreator.id }">
-						      		| <a href="/workinprocess/${job.id}/edit">Edit</a>
-						      		<form action="/${job.id}/delete" method="POST">
-						      			<input type="hidden" name="_method" value="Delete"/>
-						      			<button>Delete</button>
-						      		</form>
-						      	</c:if>
-					      	</div>
+					      	<a href="http://localhost:8080/workinprocess/${job.id}">View</a>
+					      	<c:if test="${loggedUser.id == job.jobCreator.id }">
+					      		| <a href="/workinprocess/${job.id}/edit">Edit</a>
+					      		<form action="/${job.id}/delete" method="POST">
+					      			<input type="hidden" name="_method" value="Delete"/>
+					      			<button>Delete</button>
+					      		</form>
+					      	</c:if>
 					    </tr>
 				    </c:if>
 				</c:forEach>

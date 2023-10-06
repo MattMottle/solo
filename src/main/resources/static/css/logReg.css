@@ -23,6 +23,23 @@ button {
 h3, h1 {
 	text-align: center;
 }
-.container {
-	width:600px;
+
+h1 {
+	font-size: 40pt;
 }
+.container {
+	width:700px;
+	margin: 0 auto;
+}
+.blocks {
+	border: 3px solid  black;
+	
+}
+.banner {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+

@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+h1 {
+	text-align: center;
+}
+h3 {
+	margin-top: -40px;
+}
+h3, h4 {
+	margin-left: 30px;
+}
+
+.links {
+	text-align: right;
+	background: black;
+	color: white;
+	padding-right: 15px;
+}
+
+button {
+	background: none!important;
+	border: none;
+	padding: 0!important;
+	color: #3366EE;
+	text-decoration: underline;
+	cursor: pointer;
+	margin-left: 15px;
+}

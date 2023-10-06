@@ -55,6 +55,19 @@ public class JobController {
 		return "job.jsp";
 	}
 	
+	@GetMapping("/workinprocess/pastjobs")
+	public String pastJobs(HttpSession session, Model model) {
+		if(session.getAttribute("userId") == null) {
+			return "redirect:/";
+		}
+		Long userId = (Long) session.getAttribute("userId");
+		
+		model.addAttribute("loggedUser", userService.findById(userId));
+		model.addAttribute("jobs", jobService.findAll());
+		
+		return "pastJobs.jsp";
+	}
+	
 	@GetMapping("/workinprocess/new")
 	public String newJob(@ModelAttribute("job") Job job, Model model, HttpSession session) {
 		if(session.getAttribute("userId") == null) {
