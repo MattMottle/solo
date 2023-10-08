@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+h1 {
+	display: flex;
+	align-items: center;
+}
+
+.form {
+	margin-top: 150px;
+	margin-left: 150px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+textarea {
+	border: 2px solid black;
+}
+
+.links {
+	display: flex;
+	margin-left: 100px;
+	margin-top: -20px;
+	width: 130px;
+	justify-content: space-between;
+}
+
+input, textarea {
+	height: 100%;
+	border-radius: 10px;
+}
+
+button {
+	margin-left: 50px;
+}

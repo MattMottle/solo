@@ -8,28 +8,34 @@
 <head>
 <meta charset="UTF-8">
 <title>New Bid</title>
+<link rel="stylesheet" type="text/css" href="/css/newBid.css">
+<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
+<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
-<body>
-	<h1>Hello, <c:out value="${loggedUser.firstName}"/>!</h1>
-	<p><a href="/workinprocess">Home</a> <a href="/logout">Log out</a></p>
-	<h3>Let's bid on the <c:out value="${jobToBid.name}"/>:</h3>
-	<form:form action="/bids/addBid" method="POST" modelAttribute="newBid">
-		<p>
-			<form:errors path="amount"/>
-			<form:errors path="bidRemarks"/>
-			<form:errors path="bidRemarks"/>
-		</p>
-		<p>
-			<form:label path="amount">Bid Amount:</form:label>
-			<form:input type="number" step=".01" path="amount"/>
-		</p>
-		<p>
-			<form:label path="bidRemarks">Bid Remarks:</form:label>
-			<form:textarea rows="4" path="bidRemarks"/>
-		</p>
-		<form:input type="hidden" path="bidder" value="${loggedUser.id}"/>
-		<form:input type="hidden" path="jobWithBids" value="${jobToBid.id}"/>
-		<input type="submit" value="Add Bid"/>
-	</form:form>
+<body background="/images/brick2.jpg">
+	<div class="container">
+		<h1>Hello, <c:out value="${loggedUser.firstName}"/>!</h1>
+		<div class="links">
+			<a href="/workinprocess">Home</a> 
+			<a href="/logout">Log out</a>
+		</div>
+		<h3>Let's Bid on the <c:out value="${jobToBid.name}"/>:</h3>
+		<form:form action="/bids/addBid" method="POST" modelAttribute="newBid">
+			<p>
+				<form:errors style="color: red" path="amount"/>
+				<form:errors style="color: red" path="bidRemarks"/>
+				<form:errors style="color: red" path="bidRemarks"/>
+			</p>
+			<p>
+				<form:input type="number" step=".01" path="amount" placeholder="Bid Amount"/>
+			</p>
+			<p>
+				<form:textarea rows="4" path="bidRemarks" placeholder="Bid Remarks"/>
+			</p>
+			<form:input type="hidden" path="bidder" value="${loggedUser.id}"/>
+			<form:input type="hidden" path="jobWithBids" value="${jobToBid.id}"/>
+			<button type="submit" class="btn btn-dark">+ Add Bid</button>
+		</form:form>
+	</div>
 </body>
 </html>

@@ -8,13 +8,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Edit Review</title>
 </head>
 <body>
 	<h1>Hello, <c:out value="${loggedUser.firstName}"/>!</h1>
 	<p><a href="/workinprocess">Home</a> | <a href="/logout">Log out</a></p>
 	<h3>You are reviewing <c:out value="${user.firstName}"/> <c:out value="${user.lastName}"/>:</h3>
 	<form:form action="/reviews/${thisReview.id}/editReview" method="POST" modelAttribute="thisReview">
+	<input type="hidden" name="_method" value="put">
 		<p>
 			<form:label path="rating">Rating:</form:label>
 			<form:errors path="rating"/>
@@ -27,7 +28,7 @@
 		</p>
 		<form:input type="hidden" path="reviewer" value="${loggedUser.id}"/>
 		<form:input type="hidden" path="reviewedPerson" value="${user.id}"/>
-		<input type="submit" value="Add review"/>
+		<button class="button">Submit</button>
 	</form:form>
 </body>
 </html>

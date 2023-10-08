@@ -46,14 +46,16 @@
 					      <td>$<fmt:formatNumber type="number" minFractionDigits="2" value="${job.maxBudget}"/></td>
 					      <td><c:out value="${job.jobCreator.firstName}"/></td>
 					      <td>
-					      	<div>
+					      	<div class="actions">
 						      	<a href="http://localhost:8080/workinprocess/${job.id}">View</a>
 						      	<c:if test="${loggedUser.id == job.jobCreator.id }">
-						      		| <a href="/workinprocess/${job.id}/edit">Edit</a>
+						      		<a href="/workinprocess/${job.id}/edit">Edit</a>
+						      		<div class="delete">
 						      		<form action="/${job.id}/delete" method="POST">
 						      			<input type="hidden" name="_method" value="Delete"/>
 						      			<button>Delete</button>
 						      		</form>
+						      		</div>
 						      	</c:if>
 					      	</div>
 					    </tr>
