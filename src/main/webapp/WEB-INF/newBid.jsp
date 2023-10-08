@@ -14,11 +14,15 @@
 </head>
 <body background="/images/brick2.jpg">
 	<div class="container">
-		<h1>Hello, <c:out value="${loggedUser.firstName}"/>!</h1>
+		<h1>
+			<img src="/images/hammerWrench1.png" alt="Hammer Wrench" style="width: 100px">
+			Work In Process
+		</h1>
 		<div class="links">
 			<a href="/workinprocess">Home</a> 
 			<a href="/logout">Log out</a>
 		</div>
+		<h3>Hello, <c:out value="${loggedUser.firstName}"/>!</h3>
 		<h3>Let's Bid on the <c:out value="${jobToBid.name}"/>:</h3>
 		<form:form action="/bids/addBid" method="POST" modelAttribute="newBid">
 			<p>

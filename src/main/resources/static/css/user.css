@@ -26,4 +26,11 @@
 	justify-content: center;
 	align-items: center;
 }
-
+.actions {
+	display: flex;
+	width: 135px;
+	justify-content: space-between;
+}
+a {
+	margin-left: 5px;
+}

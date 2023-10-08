@@ -8,25 +8,36 @@
 <head>
 <meta charset="UTF-8">
 <title>Review User</title>
+<link rel="stylesheet" type="text/css" href="/css/review.css">
+<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
+<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
-<body>
-	<h1>Hello, <c:out value="${loggedUser.firstName}"/>!</h1>
-	<p><a href="/workinprocess">Home</a> <a href="/logout">Log out</a></p>
-	<h3>You are reviewing <c:out value="${user.firstName}"/> <c:out value="${user.lastName}"/>:</h3>
-	<form:form action="/reviews/addReview" method="POST" modelAttribute="newReview">
-		<p>
-			<form:label path="rating">Rating:</form:label>
-			<form:errors path="rating"/>
-			<form:input type="number" path="rating"/>
-		</p>
-		<p>
-			<form:label path="reviewText">Review Text:</form:label>
-			<form:errors path="reviewText"/>
-			<form:textarea rows="4" path="reviewText"/>
-		</p>
-		<form:input type="hidden" path="reviewer" value="${loggedUser.id}"/>
-		<form:input type="hidden" path="reviewedPerson" value="${user.id}"/>
-		<input type="submit" value="Add review"/>
-	</form:form>
+<body background="/images/floor.jpg">
+	<div class="container">
+		<h1>
+			<img src="/images/hammerWrench1.png" alt="Hammer Wrench" style="width: 100px">
+			Work In Process
+		</h1>
+		<div class="links">
+			<a href="/workinprocess">Home</a> 
+			<a href="/logout">Log out</a>
+		</div>
+		<h3>Hello, <c:out value="${loggedUser.firstName}"/>!</h3>
+		<h3>You Are Reviewing <c:out value="${user.firstName}"/> <c:out value="${user.lastName}"/>:</h3>
+		<form:form action="/reviews/addReview" method="POST" modelAttribute="newReview">
+				<form:errors style="red" path="rating"/>
+				<form:errors style="red" path="reviewText"/>
+				
+			<p>
+				<form:input type="number" path="rating" placeholder="Rating 1-5"/>
+			</p>
+			<p>
+				<form:textarea rows="4" path="reviewText" placeholder="Review Text"/>
+			</p>
+			<form:input type="hidden" path="reviewer" value="${loggedUser.id}"/>
+			<form:input type="hidden" path="reviewedPerson" value="${user.id}"/>
+			<button type="submit" class="btn btn-dark">+ Add Review</button>
+		</form:form>
+	</div>
 </body>
 </html>

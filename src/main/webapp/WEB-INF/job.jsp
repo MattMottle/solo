@@ -36,6 +36,7 @@
 				</c:otherwise>
 			</c:choose>
 			<div class="desc">
+				<p>Budget: $<fmt:formatNumber type="number" minFractionDigits="2" value="${job.maxBudget}"/></p>
 				<p>Job Description:</p>
 				<p>${job.description}</p>
 		<c:if test="${loggedUser.id == job.jobCreator.id}">
